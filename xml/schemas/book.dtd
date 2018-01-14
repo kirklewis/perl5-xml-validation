@@ -1,0 +1,4 @@
+<!ELEMENT book (title,author,numPages?)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT numPages (#PCDATA)>
