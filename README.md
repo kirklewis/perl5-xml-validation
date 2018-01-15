@@ -2,7 +2,7 @@
 Status](https://travis-ci.org/kirklewis/perl5-xml-validation.svg?branch=master)](https://travis-ci.org/kirklewis/perl5-xml-validation)
 # Perl 5 XML Validation with DTD and XSD
 
-Code and files used in my [article](#) which briefly covers XML Validation in Perl 5 using `XML::LibXML` modules.
+Code and files used in my [article](https://medium.com/@kirklewis/perl-5-xml-validation-with-dtd-and-xsd-ec2d90f7c434) which briefly covers XML Validation in Perl 5 using `XML::LibXML` modules.
 
 **To Install**
 
