@@ -1,11 +1,10 @@
 #!/usr/bin/env perl
 
+use v5.18;
 use strict;
-use warnings;
 
 use XML::LibXML;
 use Try::Tiny qw(try catch);
-use experimental qw(say);
 
 my $xml_doc = XML::LibXML->load_xml(location => './xml/book.xml');
 my $xsd_doc = XML::LibXML::Schema->new(location => './xml/schemas/book.xsd');
