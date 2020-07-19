@@ -24,7 +24,7 @@ prove -Ilocal/lib/perl5 -v t/
 
 ---
 
-Copyright (c) 2018 Kirk Lewis
+Copyright (c) 2020 Kirk Lewis
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

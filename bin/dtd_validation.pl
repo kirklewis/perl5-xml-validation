@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 use v5.18;
-use strict;
+use warnings;
 
 use XML::LibXML;
 use Try::Tiny qw(try catch);
