@@ -1,0 +1,52 @@
+name: test
+
+on:
+  push:
+  schedule:
+    - cron: '0 6 1 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  latest:
+    name: perl ${{ matrix.perl }} (latest CPAN)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        perl: ['5.38', '5.40', '5.42']
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install libxml2 headers
+        run: sudo apt-get update && sudo apt-get install -y libxml2-dev zlib1g-dev
+
+      # cpanm has no snapshot support, so this job resolves whatever a reader
+      # following the article gets from CPAN today. The monthly run watches it.
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: ${{ matrix.perl }}
+          install-modules-with: cpanm
+
+      - run: perl -V
+
+      - run: prove -lv t
+
+  pinned:
+    name: perl 5.42 (cpanfile.snapshot)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install libxml2 headers
+        run: sudo apt-get update && sudo apt-get install -y libxml2-dev zlib1g-dev
+
+      - uses: shogo82148/actions-setup-perl@v1
+        with:
+          perl-version: '5.42'
+          install-modules-with: carton
+
+      - run: carton exec -- prove -lv t
